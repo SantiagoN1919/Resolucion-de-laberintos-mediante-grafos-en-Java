@@ -26,9 +26,9 @@ public class Grafo {
 
         for (int f = 0; f < filas; f++) {
             for (int c = 0; c < cols; c++) {
-                if (lab.esTransitable(f, c)) {
+                if (lab.estransitable(f, c)) {
                     int id = f * cols + c;
-                    vertices.agregar(new Vertice(id, f, c));
+                    vertices.agregarVertice(new Vertice(id, f, c));
                     adyacencia.put(id, new LinkedList<>());
                 }
             }
@@ -36,12 +36,12 @@ public class Grafo {
 
         for (int f = 0; f < filas; f++) {
             for (int c = 0; c < cols; c++) {
-                if (!lab.esTransitable(f, c)) continue;
+                if (!lab.estransitable(f, c)) continue;
                 int id = f * cols + c;
                 for (int d = 0; d < 4; d++) {
                     int nf = f + DF[d];
                     int nc = c + DC[d];
-                    if (nf >= 0 && nf < filas && nc >= 0 && nc < cols && lab.esTransitable(nf, nc)) {
+                    if (nf >= 0 && nf < filas && nc >= 0 && nc < cols && lab.estransitable(nf, nc)) {
                         adyacencia.get(id).add(new Arcos(id, nf * cols + nc, 1));
                     }
                 }
